@@ -1,10 +1,11 @@
 param(
     [int]$days = 30,
-    [string]$extension = "*.log",
+    [string]$extension = "log",
     [parameter(Mandatory = $true)][string]$path
 )
 
 $days = "-" + $days
+$extension = "*." + $extension
 $path = $path + "\*"
 
 $date = (Get-Date).AddDays($days)
