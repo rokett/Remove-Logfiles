@@ -4,9 +4,9 @@ param(
     [parameter(Mandatory = $true)][string]$path
 )
 
-$days = "-" + $days
-$extension = "*." + $extension
-$path = $path + "\*"
+$days = "-$days"
+$extension = "*.$extension"
+$path = "$path\*"
 
 $date = (Get-Date).AddDays($days)
 
@@ -18,6 +18,6 @@ if (![System.Diagnostics.EventLog]::SourceExists('Housekeeper')) {
     New-EventLog -LogName Application -Source Housekeeper
 }
 
-$message = 'Housekeeping complete for ' + $path
+$message = "Housekeeping complete for $path"
 
 Write-EventLog -LogName Application -Source Housekeeper -EntryType Information -EventId 1 -Message $message
