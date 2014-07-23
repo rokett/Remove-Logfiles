@@ -8,7 +8,7 @@ When Housekeeper finishes, whether it has deleted anything or not, it will write
 
 ## Usage
 
-The following examples will delete all *.tmp files after 3 days.
+The following examples will delete all *.tmp files which are older than 3 days.
 
 ### From within a Powershell console
 
