@@ -1,24 +1,24 @@
-# Housekeeper
+# Remove-Logfiles
 
-Housekeeper is a Powershell script used to delete files after a user defined number of days.
+Remove-Logfiles is a Powershell module used to delete files after a user defined number of days.
 
-Housekeeper defaults to deleting all *.log files in a user specified location which are older than 30 days.
+Remove-Logfiles defaults to deleting all *.log files in a user specified location which are older than 30 days.
 
-When Housekeeper finishes, whether it has deleted anything or not, it will write an entry to the Application Event Log to say that it is complete.
+When Remove-Logfiles finishes, whether it has deleted anything or not, it will write an entry to the Application Event Log to say that it is complete.
 
 ## Usage
 
+**NOTE:** This module MUST be run as an administrator, at least on the first run, as it creates a new Event Log source.
+
 The following examples will delete all *.tmp files which are older than 3 days.
 
-### From within a Powershell console
+First you need to import the module:
 
-Assuming you are already in the directory where the Housekeeper script lives.
+    Import-Module Remove-Logfiles
 
-    .\housekeeper.ps1 -path c:\path\to\logs -extension tmp -days 3
+Then you can call the cmdlet to delete logfiles:
 
-### From the command line
-
-    powershell -ExecutionPolicy RemoteSigned -NoProfile -File c:\scripts\housekeeper.ps1 -path c:\path\to\logs -extension tmp -days 3
+    Remove-Logfiles -Path c:\path\to\logs -Extension tmp -OlderThan 3
 
 ## Requirements
-A minimum of PowerShell 3.0 is required for this script to work.
+A minimum of PowerShell 3.0 is required for this module to work.
